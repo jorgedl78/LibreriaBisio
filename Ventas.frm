@@ -39,7 +39,7 @@ Begin VB.Form frmFacturador
       _ExtentX        =   2778
       _ExtentY        =   450
       _Version        =   393216
-      Format          =   92143617
+      Format          =   93192193
       CurrentDate     =   42724
    End
    Begin VB.CommandButton Command1 
@@ -930,6 +930,8 @@ Private Sub cmdAceptar_Click()
     End If
     cn.Close
     If ComprobanteFiscal = "NO" Then
+
+    
         cn.Open
         
         Dim obj_Impresora As Object
@@ -1064,6 +1066,19 @@ Private Sub Form_Load()
     lblNumeroDocumento = ""
     ControloScanner
     DTPFecha.Value = Date
+    
+    MsgBox (printerTicket)
+    MsgBox (Printer.DeviceName)
+    
+
+        
+    Dim obj_Impresora As Object
+    Set obj_Impresora = CreateObject("WScript.Network")
+    obj_Impresora.setdefaultprinter printerTicket
+    
+    MsgBox (Printer.DeviceName)
+    
+    
     
 
 On Error GoTo impresora_apag
